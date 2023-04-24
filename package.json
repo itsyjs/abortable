@@ -1,0 +1,9 @@
+{
+  "name": "@itsy/abortable",
+  "version": "1.0.1",
+  "description": "a convenience wrapper for AbortController",
+  "main": "./Abortable.js",
+  "exports": "./Abortable.js",
+  "author": "Dave Honneffer <pearofducks@gmail.com>",
+  "license": "MIT"
+}
