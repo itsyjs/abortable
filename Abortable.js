@@ -17,11 +17,11 @@ export class Abortable {
     this.#finallyCb = finallyCb
   }
 
-  async update() {
+  async update(...args) {
     if (this.#inProgress) this.controller.abort()
     this.#inProgress = true
     try {
-      return await this.#updateCb()
+      return await this.#updateCb(...args)
     } catch (err) {
       this.#catchCb?.(err)
     } finally {
