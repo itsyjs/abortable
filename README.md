@@ -3,16 +3,15 @@
 ## use
 
 ```js
-import { Abortable } from '@itsy/abortable'
-import ky from 'ky'
+import { useAbortable } from '@itsy/abortable'
 
 let loading = false
-const updater = new Abortable()
+const updater = useAbortable()
 
-updater.callbacks({
-  updateCb() {
+updater.setCallbacks({
+  async updateCb() {
     loading = true
-    return ky.get('/foo/bar', { signal: updater.signal })
+    return await (await fetch('/foo/bar', { signal: updater.signal })).json()
   },
   catchCb(err) {
     console.error('Failed to update due to', err)
