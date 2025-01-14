@@ -14,7 +14,7 @@ export const useAbortable = ({ updateCb, catchCb, finallyCb } = {}) => {
     },
     get signal() { return controller.signal },
     async update(...args) {
-      if (inProgress) controller.abort()
+      if (inProgress) controller.abort('@itsy/abortable sent abort signal during update')
       inProgress = true
       try {
         return await $updateCb(...args)
